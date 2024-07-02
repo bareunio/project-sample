@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <settings>
+        <!-- 연관 및 컬렉션의 지연 로딩 활성화 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+
+        <!-- 공격적인 지연 로딩 비활성화 -->
+        <setting name="aggressiveLazyLoading" value="false"/>
+
+        <!-- 생성된 키를 사용하여 자동으로 열 값을 검색 -->
+        <setting name="useGeneratedKeys" value="true"/>
+
+        <!-- SLF4J로 로그 출력 설정 -->
+        <setting name="logImpl" value="SLF4J"/>
+
+        <!-- 성능 향상을 위해 로컬 캐시 범위를 세션으로 설정 -->
+        <setting name="localCacheScope" value="SESSION"/>
+
+        <!-- JDBC 2.0 호환 자동 커밋 동작 활성화 -->
+        <setting name="jdbcTypeForNull" value="NULL"/>
+    </settings>
+
+    <typeAliases>
+        <typeAlias type="io.bareun.base.common.dto.map.BaseMap" alias="BaseMap"/>
+    </typeAliases>
+</configuration>
