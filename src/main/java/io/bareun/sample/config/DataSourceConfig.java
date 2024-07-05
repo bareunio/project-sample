@@ -2,6 +2,7 @@ package io.bareun.sample.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import net.sf.log4jdbc.Log4jdbcProxyDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -29,7 +30,8 @@ public class DataSourceConfig {
 
     @Bean(name = {"dataSource", "egov.dataSource", "egovDataSource"})
     public DataSource dataSource() {
-        return new HikariDataSource(hikariConfig());
+        HikariDataSource dataSource = new HikariDataSource(hikariConfig());
+        return new Log4jdbcProxyDataSource(dataSource);
     }
 
     @Bean

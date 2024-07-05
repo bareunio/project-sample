@@ -17,13 +17,15 @@ public class ExcelFileController {
     private final ExcelFileService excelFileService;
 
     @PostMapping("/upload")
-    public ApiResponse<ExcelUploadFile<BaseMap>> uploadFile(@RequestParam MultipartFile file) {
-        return ApiResponse.success(excelFileService.upload(file));
+    public ApiResponse<?> uploadFile(@RequestParam MultipartFile file) {
+        // 엑셀 업로드 객체
+        ExcelUploadFile<BaseMap> upload = excelFileService.upload(file);
+
+        return ApiResponse.success(upload);
     }
 
     @GetMapping("/download")
-    public ResponseEntity<?> download() {
-        return excelFileService.download();
+    public ResponseEntity<?> download(@RequestParam String fileName) {
+        return excelFileService.download(fileName);
     }
-
 }

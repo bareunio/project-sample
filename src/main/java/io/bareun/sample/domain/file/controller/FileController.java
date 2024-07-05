@@ -16,8 +16,11 @@ public class FileController {
     private final FileService fileService;
 
     @PostMapping("/upload")
-    public ApiResponse<AttachUploadFile> uploadFile(@RequestParam MultipartFile file) {
-        return ApiResponse.success(fileService.upload(file));
+    public ApiResponse<?> uploadFile(@RequestParam MultipartFile file) {
+        // 첨부파일 업로드 객체 반환
+        AttachUploadFile attachUploadFile = fileService.upload(file);
+
+        return ApiResponse.success(attachUploadFile);
     }
 
     @GetMapping("/download/{id}")

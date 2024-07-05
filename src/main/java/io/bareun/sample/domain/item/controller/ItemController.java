@@ -16,7 +16,7 @@ import java.util.Map;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/items")
+@RequestMapping("/item")
 public class ItemController {
 
     private final ItemService itemService;

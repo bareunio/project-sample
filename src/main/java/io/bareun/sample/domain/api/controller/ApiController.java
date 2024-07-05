@@ -17,12 +17,14 @@ public class ApiController {
     private final ApiService apiService;
 
     @GetMapping("/users")
-    public ApiResponse<BaseMap> readAll() {
-        return ApiResponse.success(apiService.readAll());
+    public ApiResponse<?> readAll() {
+        BaseMap result = apiService.readAll();
+
+        return ApiResponse.success(result);
     }
 
     @PostMapping("/async/users")
-    public ApiResponse<Void> create() {
+    public ApiResponse<?> create() {
         apiService.create();
         return ApiResponse.success();
     }
