@@ -25,4 +25,9 @@
     <typeAliases>
         <typeAlias type="io.bareun.base.common.dto.map.BaseMap" alias="BaseMap"/>
     </typeAliases>
+
+    <typeHandlers>
+        <typeHandler handler="org.apache.ibatis.type.LocalDateTimeTypeHandler"/>
+        <typeHandler handler="org.apache.ibatis.type.LocalDateTypeHandler"/>
+    </typeHandlers>
 </configuration>

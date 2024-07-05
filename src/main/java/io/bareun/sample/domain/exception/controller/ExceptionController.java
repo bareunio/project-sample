@@ -1,7 +1,9 @@
 package io.bareun.sample.domain.exception.controller;
 
+import io.bareun.base.common.dto.response.ApiResponse;
 import io.bareun.base.exception.BusinessException;
-import io.bareun.base.exception.code.ErrorCode;
+import io.bareun.base.exception.code.BaseErrorCode;
+import io.bareun.sample.common.code.CustomErrorCode;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,22 +13,27 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExceptionController {
 
     @GetMapping("/required")
-    public void required() {
-        throw new BusinessException(ErrorCode.REQUIRED, "아이디");
+    public ApiResponse<?> required() {
+        throw new BusinessException(BaseErrorCode.REQUIRED, "아이디");
     }
 
     @GetMapping("/validate")
-    public void validate() {
-        throw new BusinessException(ErrorCode.VALIDATE, "이메일");
+    public ApiResponse<?> validate() {
+        throw new BusinessException(BaseErrorCode.VALIDATE, "이메일");
     }
 
     @GetMapping("/message")
-    public void message() {
+    public ApiResponse<?> message() {
         throw new BusinessException("업무 에러");
     }
 
     @GetMapping("/code")
-    public void code() {
-        throw new BusinessException(ErrorCode.BAD_REQUEST);
+    public ApiResponse<?> code() {
+        throw new BusinessException(BaseErrorCode.BAD_REQUEST);
+    }
+
+    @GetMapping("/custom/code")
+    public ApiResponse<?> customCode() {
+        throw new BusinessException(CustomErrorCode.CUSUTOM_NOT_FOUND);
     }
 }
