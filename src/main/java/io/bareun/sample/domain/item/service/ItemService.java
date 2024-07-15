@@ -5,7 +5,6 @@ import io.bareun.sample.domain.item.dao.ItemDao;
 import lombok.RequiredArgsConstructor;
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,7 +15,6 @@ import java.util.List;
  * 이 클래스는 상품에 대한 데이터베이스 연산을 수행합니다.
  */
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class ItemService extends EgovAbstractServiceImpl {
 
@@ -28,7 +26,6 @@ public class ItemService extends EgovAbstractServiceImpl {
      * @param parameters readAll 연산의 파라미터
      * @return 상품 리스트
      */
-    @Transactional(readOnly = true)
     public List<BaseMap> readAll(BaseMap parameters) {
         // TODO : 비지니스 로직 추가
         return itemDao.findAll(parameters);
@@ -40,7 +37,6 @@ public class ItemService extends EgovAbstractServiceImpl {
      * @param id 상품의 id
      * @return 특정 상품
      */
-    @Transactional(readOnly = true)
     public BaseMap read(Long id) {
         // TODO : 비지니스 로직 추가
         return itemDao.findById(id);
